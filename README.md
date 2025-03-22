@@ -1,4 +1,4 @@
-# big_data_voter_sentiment_analysis
+# LEVERAGING BIG DATA IN TIME SENTIMENT ANALYSIS AND VOTER ANALYSIS FOR US Election 2024
 This project examines big data technologies to analyze voter sentiment during recent elections. It decodes millions of Reddit conversations using HDFS for data storage and NLP models like Naïve Bayes and BERT.
 It provides useful information for researchers, campaign teams, and policymakers by shedding light on the distribution of sentiment and polarization in political discourse
 
