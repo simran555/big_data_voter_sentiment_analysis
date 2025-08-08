@@ -1,18 +1,73 @@
-# LEVERAGING BIG DATA IN TIME SENTIMENT ANALYSIS AND VOTER ANALYSIS FOR US Election 2024
-This project examines big data technologies to analyze voter sentiment during recent elections. It decodes millions of Reddit conversations using HDFS for data storage and NLP models like Naïve Bayes and BERT.
-It provides useful information for researchers, campaign teams, and policymakers by shedding light on the distribution of sentiment and polarization in political discourse
+<b>#### Project Title: Voter Sentiment Analysis and Big Data</b>
 
-METHODOLOGY:
-Our methodology for voter sentiment analysis involves a comprehensive approach leveraging big data technologies and advanced machine learning models. The process consists of three key steps:
+This project focuses on leveraging big data for real-time voter sentiment analysis and voter analysis. The goal is to understand public opinion and identify trends by analyzing unstructured data from social media.
 
-A.	Data Collection and Cleaning
-	We used data from Reddit, a site full of user-generated debates, as the basis for our Sentiment Analysis and Voter Insights for the 2024 Election project. Election-related posts and comments were our focus since they offer important insights into the attitudes and viewpoints of the general population. A strong data collecting and cleaning pipeline was put in place to guarantee that the data gathered was of the highest calibre, dependable, and prepared for analysis.
- 
- B.	HDFS Configuration and Data Storage
-To store and retrieve the Reddit data efficiently, we set up the Hadoop Distributed File System (HDFS). The Hadoop Distributed File System (HDFS) was used to store and administer the Reddit data that was gathered. 
+<b>#### The Problem</b>
+Traditional analysis methods struggle with the vast amount of unstructured data available, leading to slow processing and a lack of scalability. This can result in missed opportunities to detect real-time sentiment shifts and inaccurate insights that hinder effective alignment with voter concerns. The project addresses these challenges by automating the analysis process to handle large datasets efficiently.
 
-C.	Sentiment Analysis Model Training
+<b>#### Methodology</b>
+The project followed a five-step methodology:
 
-This project uses Naïve Bayes for voter sentiment analysis on Reddit data, leveraging its efficiency in text classification. To address class imbalance, Complement Naïve Bayes (CNB) is applied, reducing the dominance of majority classes. Techniques like SentimentIntensityAnalyzer, WordNetLemmatizer, TfidfVectorizer, and SelectKBest enhance accuracy by refining feature selection and capturing nuanced sentiment.
+<b>Data Collection and Cleaning:</b> Data was collected from Reddit and preprocessed to remove noise, such as URLs, special characters, and stopwords.
 
-This project uses BERT for voter sentiment analysis on Reddit, leveraging its bidirectional context understanding and pre-training on large datasets for accurate interpretation of complex political language. BERT’s ability to handle idioms, slang, and intricate grammar enhances accuracy. Components like BertTokenizer, BertForSequenceClassification, and Trainer optimize the model for sentiment prediction.
+<b>Hadoop Configuration:</b> The Hadoop client and HDFS (Hadoop Distributed File System) were configured for storing and retrieving the cleaned data.
+<img width="956" height="350" alt="image" src="https://github.com/user-attachments/assets/86afb73a-3142-4f75-84ad-fdb62b6db179" />
+
+
+<b>Training Data Preparation:</b> A training dataset was prepared for sentiment analysis.
+
+<b>Model Testing:</b> Both Naïve Bayes and BERT models were tested on the cleaned Reddit dataset.
+
+<b>Evaluation and Insights:</b> The models were evaluated, and key insights were derived from the results.
+
+<b>#### Models Used</b>
+
+<b>Naïve Bayes</b>
+This model was chosen for its strengths in text classification, handling sparse data, and quick training and implementation. 
+<img width="712" height="630" alt="image" src="https://github.com/user-attachments/assets/e1b36124-ecb4-4139-be19-dfba10746b9a" />
+
+The implementation used Complement Naïve Bayes instead of Multinomial Naïve Bayes, and featured enhancements such as:
+
+<b>VADER Sentiment Scoring:</b> Used SentimentIntensityAnalyzer from NLTK to detect positive, negative, and neutral sentiments.
+
+<b>Feature Engineering:</b> Employed TF-IDF vectorization and N-grams to convert text into numerical data and capture word importance.
+
+<b>Feature Selection:</b> Used SelectKBest and chi2 to optimize feature selection.
+
+<b>Data Balancing:</b> Oversampling was used to balance the training data, specifically the minority positive and negative classes.
+
+<b>Results:</b> The Naïve Bayes model's accuracy was improved from 18% to approximately 33% after these adjustments.
+
+
+<b>BERT Model</b>
+The BERT (Bidirectional Encoder Representations from Transformers) model was used for its state-of-the-art performance and contextual understanding. 
+<img width="655" height="284" alt="image" src="https://github.com/user-attachments/assets/63e43f7f-3639-4237-a6a1-3fde38b9fea0" />
+The implementation involved:
+
+<b>BERT Tokenizer:</b> Converted text into tokens for model understanding.
+
+<b>BERT Model for Sequence Classification:</b> A pre-trained model was fine-tuned for sentiment classification.
+
+<b>Training:</b> The model was trained using a custom Trainer instance with defined TrainingArguments.
+
+<b>Prediction:</b> Sentiments were predicted on the test data, and numeric labels were mapped back to sentiment text.
+
+<b>Results:</b> The BERT model achieved an accuracy of 29.69%. It showed high precision in identifying positive sentiment but struggled with negative and neutral sentiments.
+
+<b>#### Analysis and Insights</b>
+The sentiment analysis was applied to data related to two political figures, Kamala Harris and Donald Trump. The analysis showed that:
+
+<b>Kamala Harris-related data</b> had a sentiment distribution of 22.6% positive, 31.7% negative, and 45.7% neutral.
+
+<b>Donald Trump-related data</b> had a distribution of 19.6% positive, 33.7% negative, and 46.6% neutral.
+
+<b>#### Challenges and Limitations</b>
+Several challenges were encountered during the project:
+
+<b>Data Handling:</b> Configuration and authorization issues with PRAW for Reddit data extraction.
+
+<b>Hadoop:</b> Permissions and user privilege issues with the HDFS root user, which prevented service startup.
+
+<b>BERT Training:</b> Training and fine-tuning the BERT model was time-consuming, taking approximately 5 hours.
+
+<b>Data Quality:</b> The training dataset from Kaggle had issues with sentiment labels.
